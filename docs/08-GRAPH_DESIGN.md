@@ -883,3 +883,33 @@ into:
 ```
 Autonomous Multi-Agent Travel Planning System
 ```
+
+---
+
+# Implementation Status (Sprint 2)
+
+Implemented at:
+
+```
+backend/app/graph/
+
+├── state.py       # TravelState shared by all agents
+├── router.py      # Supervisor decision -> next node mapping
+└── workflow.py    # StateGraph compilation + initial state builder
+```
+
+Implemented flow:
+
+```
+START -> requirement -> supervisor -> (planner | itinerary | review | end)
+planner -> itinerary -> review -> END
+```
+
+Notes:
+
+- Agents update only the state keys they own.
+- The supervisor only routes; it never generates trip content.
+- The router acts as a safety net: unknown decisions terminate the workflow.
+- Persistence (checkpointing) and memory are deferred to later sprints.
+
+---

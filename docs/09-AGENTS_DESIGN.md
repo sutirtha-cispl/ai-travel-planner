@@ -917,3 +917,31 @@ Human Approval
 ```
 
 The architecture should make adding new agents simple without modifying existing agents.
+
+---
+
+# Implementation Status (Sprint 2)
+
+Implemented agents at:
+
+```
+backend/app/agents/
+
+├── base_agent.py           # shared prompt + LLM + structured-output chain
+├── requirement_agent.py    # extracts travel requirements
+├── supervisor_agent.py     # routes the workflow (planner/itinerary/review/ask_user/end)
+├── planner_agent.py        # creates the travel strategy
+├── itinerary_agent.py      # creates the day-by-day schedule
+└── review_agent.py         # validates the itinerary
+```
+
+Properties:
+
+- Every agent has a single responsibility and its own prompt template in `backend/app/prompts/agents/`.
+- Every agent validates its LLM output against a Pydantic schema in `backend/app/schemas/agent_outputs.py`.
+- Agents communicate only through `TravelState`; there are no direct agent-to-agent calls.
+- The LLM is injected for testability; when omitted, it is resolved lazily from settings.
+
+Flight / Hotel / Activity / Budget data agents are scheduled for Sprint 3 (external tools).
+
+---

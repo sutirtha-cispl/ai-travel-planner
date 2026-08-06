@@ -1,7 +1,8 @@
 """Chat endpoint.
 
-Foundation placeholder only. AI agent integration is intentionally not
-implemented yet (see Sprint 2). The route delegates to the chat service.
+Receives a user message and returns the AI travel plan produced by the
+LangGraph workflow. The route only validates the request, calls the service,
+and returns the response.
 """
 
 from fastapi import APIRouter
@@ -13,5 +14,5 @@ router = APIRouter()
 
 
 @router.post("/chat", response_model=ChatResponse)
-def chat(request: ChatRequest) -> ChatResponse:
-    return ChatService().send_message(request)
+async def chat(request: ChatRequest) -> ChatResponse:
+    return await ChatService().send_message(request)

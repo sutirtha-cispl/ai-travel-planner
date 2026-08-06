@@ -182,6 +182,38 @@ The chat API is the primary AI communication endpoint.
 
 ---
 
+# Implementation Status (Sprint 2)
+
+Implemented at:
+
+```
+POST /api/v1/chat
+```
+
+Request:
+
+```json
+{
+    "message": "Plan a 7 day Japan trip"
+}
+```
+
+Response:
+
+```json
+{
+    "response": "Here is your travel plan for Japan."
+}
+```
+
+Behavior:
+
+- The request runs the LangGraph travel workflow (Requirement → Supervisor → Planner → Itinerary → Review).
+- If `OPENAI_API_KEY` is not configured, the endpoint returns a graceful "not configured" message instead of failing.
+- The richer contract below (`conversation_id`, `user_id`, streaming) is planned for later sprints.
+
+---
+
 # Send Chat Message
 
 ```

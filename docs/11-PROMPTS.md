@@ -876,3 +876,24 @@ A good prompt should make agents:
 - Predictable
 - Explainable
 - Easy to improve
+
+---
+
+# Implementation Status (Sprint 2)
+
+Implemented prompt templates at:
+
+```
+backend/app/prompts/agents/
+
+├── base_prompt.py            # shared system rules
+├── requirement_prompt.py
+├── supervisor_prompt.py
+├── planner_prompt.py
+├── itinerary_prompt.py
+└── review_prompt.py
+```
+
+Each template defines Role, Objective, Context, Instructions, Constraints, and Output Format, and is combined with `BASE_SYSTEM_RULES`. Prompts are imported by agents from `backend/app/prompts/agents/` and never written inline.
+
+---
