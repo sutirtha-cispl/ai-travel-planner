@@ -54,7 +54,9 @@ class BaseAgent(ABC):
     def _build_chain(self) -> Runnable:
         llm = self.llm or get_llm()
         if self.output_schema is not None:
-            return self.prompt_template | llm.with_structured_output(self.output_schema)
+            return self.prompt_template | llm.with_structured_output(
+                self.output_schema, method="function_calling"
+            )
         return self.prompt_template | llm
 
     def _ensure_chain(self) -> Runnable:

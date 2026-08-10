@@ -32,6 +32,7 @@ class Settings(BaseSettings):
     LLM_PROVIDER: str = "openai"
     MODEL_NAME: str = "gpt-4.1-mini"
     OPENAI_API_KEY: str = ""
+    OPENAI_BASE_URL: str = ""
 
     CORS_ORIGINS: str = "http://localhost:5173"
 

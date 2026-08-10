@@ -418,10 +418,16 @@ Example:
 APP_ENV=development
 DATABASE_URL=postgresql+psycopg://travel:travel@localhost:5432/travel_db
 LLM_PROVIDER=openai
-MODEL_NAME=gpt-4.1-mini
-OPENAI_API_KEY=
+MODEL_NAME=llama-3.3-70b-versatile
+OPENAI_API_KEY=<your-groq-or-openai-key>
+OPENAI_BASE_URL=https://api.groq.com/openai/v1
 CORS_ORIGINS=http://localhost:5173
 ```
+
+Use OpenAI by leaving `OPENAI_BASE_URL` empty and setting `MODEL_NAME` to an
+OpenAI model (e.g. `gpt-4.1-mini`). Or use Groq's free tier via its
+OpenAI-compatible endpoint (`https://api.groq.com/openai/v1`) with a Groq key —
+no OpenAI account required. The key is read from `OPENAI_API_KEY` in both cases.
 
 Never commit:
 

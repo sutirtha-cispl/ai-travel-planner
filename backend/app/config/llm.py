@@ -26,6 +26,8 @@ def get_llm() -> BaseChatModel:
             model=settings.MODEL_NAME,
             temperature=0.2,
             max_tokens=2048,
+            api_key=settings.OPENAI_API_KEY,
+            base_url=settings.OPENAI_BASE_URL or None,
         )
 
     raise ExternalServiceError(f"Unsupported LLM provider: {settings.LLM_PROVIDER}")
