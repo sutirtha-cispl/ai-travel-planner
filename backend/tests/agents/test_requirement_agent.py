@@ -77,6 +77,31 @@ async def test_returns_failed_status_on_invalid_output():
     assert "error" in update
 
 
+async def test_optional_preferences_not_reported_as_critical_missing():
+    agent = RequirementAgent(
+        llm=FakeStructuredChatModel(
+            [
+                {
+                    "destination": "Japan",
+                    "travel_dates": None,
+                    "duration": 7,
+                    "travelers": 2,
+                    "budget": 2000,
+                    "preferences": [],
+                    "missing_fields": ["preferences", "travel_dates"],
+                }
+            ]
+        )
+    )
+
+    update = await agent.execute(_state())
+
+    assert update["destination"] == "Japan"
+    assert update["duration"] == 7
+    assert update["budget"] == 2000
+    assert update["missing_fields"] == []
+
+
 def test_prompt_input_serializes_existing_requirements():
     agent = RequirementAgent(llm=FakeStructuredChatModel([{}]))
 

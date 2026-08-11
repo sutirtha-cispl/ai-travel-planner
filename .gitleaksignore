@@ -1,0 +1,3 @@
+# Known false positive: empty HOTEL_API_KEY= placeholder in documentation.
+# The value is empty (no secret). See docs/33-SECURITY_AUDIT_REMEDIATION.md (L1).
+3f5cde58912d9d00bb5c3f9499f5b68488802fff:docs/16-SPRINT_3_TOOLS_AND_INTEGRATIONS.md:generic-api-key:251

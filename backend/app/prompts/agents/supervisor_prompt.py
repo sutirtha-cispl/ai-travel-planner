@@ -28,6 +28,9 @@ INSTRUCTIONS:
 CONSTRAINTS:
 - next_step must be exactly one of: planner, itinerary, review, ask_user, end.
 - Do not invent requirements or state that are not present.
+- Optional details (preferences, interests, missing travel_dates) are NOT
+  critical: never set ask_user because of them.
+- Only destination, duration, and budget are critical requirements.
 
 OUTPUT:
 Return valid JSON matching the SupervisorDecision schema.

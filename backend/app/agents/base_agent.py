@@ -64,11 +64,21 @@ class BaseAgent(ABC):
             self._chain = self._build_chain()
         return self._chain
 
+    async def _prepare_prompt(self, state: dict[str, Any]) -> dict[str, Any]:
+        """Build the prompt variable map for this state.
+
+        Subclasses may override this async hook to enrich the prompt with
+        additional context (e.g. tool results) before the chain runs.
+        """
+        return self._prompt_input(state)
+
     async def execute(self, state: dict[str, Any]) -> dict[str, Any]:
         """Run the agent and return a partial state update."""
         started = time.perf_counter()
         try:
-            output = await self._ensure_chain().ainvoke(self._prompt_input(state))
+            output = await self._ensure_chain().ainvoke(
+                await self._prepare_prompt(state)
+            )
             update = self._state_update(state, output)
             logger.info(
                 "Agent '%s' executed successfully in %.3fs",

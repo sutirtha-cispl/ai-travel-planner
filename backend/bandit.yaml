@@ -1,0 +1,8 @@
+# Bandit configuration.
+#
+# B324 is skipped because app/tools/mocks/base.py uses hashlib.sha1 only to
+# derive a deterministic seed for mock providers (stable_seed). It is NOT used
+# for cryptography, authentication, or any security-sensitive operation.
+# See docs/20-SECURITY_AND_PRODUCTION_GUIDELINES.md and the security audit.
+skips:
+  - B324

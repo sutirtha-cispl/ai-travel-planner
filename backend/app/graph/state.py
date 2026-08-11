@@ -15,6 +15,7 @@ class TravelState(TypedDict, total=False):
 
     # Requirements (owned by the Requirement Agent)
     destination: str | None
+    origin: str | None
     travel_dates: dict[str, str] | None
     duration: int | None
     travelers: int | None
@@ -26,6 +27,7 @@ class TravelState(TypedDict, total=False):
     # Planning artifacts
     strategy: dict[str, Any]
     itinerary: dict[str, Any]
+    tool_results: dict[str, Any]
 
     # Review results (owned by the Review Agent)
     review_notes: list[dict[str, str]]

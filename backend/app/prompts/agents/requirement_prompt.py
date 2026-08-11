@@ -16,12 +16,13 @@ CONTEXT:
 You receive the user's latest message and any requirements already known.
 
 INSTRUCTIONS:
-1. Identify the destination, travel dates, duration, number of travelers,
-   budget, and interests.
+1. Identify the origin, destination, travel dates, duration, number of
+   travelers, budget, and interests.
 2. If a field is not mentioned, leave it empty and add it to missing_fields.
 3. Only report facts stated by the user.
 
 CONSTRAINTS:
+- origin must be the departure city or country when stated (e.g. "from Kolkata").
 - destination must be a city or country name.
 - duration is the total number of days as an integer.
 - budget is the total trip budget in USD as an integer.

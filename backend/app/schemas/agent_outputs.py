@@ -11,6 +11,7 @@ class RequirementOutput(BaseModel):
     """Structured requirements extracted from the user's message."""
 
     destination: str | None = None
+    origin: str | None = None
     travel_dates: dict[str, str] | None = None
     duration: int | None = None
     travelers: int | None = None

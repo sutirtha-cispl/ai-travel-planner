@@ -26,6 +26,7 @@ class ItineraryAgent(BaseAgent):
             "duration": state.get("duration"),
             "preferences": to_json(state.get("preferences", [])),
             "strategy": to_json(state.get("strategy", {})),
+            "tool_results": to_json(state.get("tool_results", {})),
         }
 
     def _state_update(

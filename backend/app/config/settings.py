@@ -34,6 +34,11 @@ class Settings(BaseSettings):
     OPENAI_API_KEY: str = ""
     OPENAI_BASE_URL: str = ""
 
+    # Tools / external integrations
+    TOOLS_PROVIDER: str = "mock"
+    TOOL_TIMEOUT_SECONDS: float = 10.0
+    DEFAULT_ORIGIN: str = "Kolkata"
+
     CORS_ORIGINS: str = "http://localhost:5173"
 
     @property

@@ -30,6 +30,7 @@ def test_chat_returns_itinerary_when_workflow_succeeds(client, monkeypatch):
                 [
                     {
                         "destination": "Japan",
+                        "origin": "Mumbai",
                         "travel_dates": None,
                         "duration": 5,
                         "travelers": 1,

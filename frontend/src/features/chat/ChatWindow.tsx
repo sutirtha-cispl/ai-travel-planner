@@ -2,6 +2,7 @@ import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { sendMessage } from '../../services/chat.service'
 import type { ChatMessage } from '../../types/chat'
+import MarkdownMessage from '../../components/ui/MarkdownMessage'
 
 export default function ChatWindow() {
   const [messages, setMessages] = useState<ChatMessage[]>([])
@@ -62,13 +63,15 @@ export default function ChatWindow() {
             key={message.id}
             className={`mb-3 ${message.role === 'user' ? 'text-right' : ''}`}
           >
-            <div
-              className={`inline-block rounded-lg px-3 py-2 text-sm ${
-                message.role === 'user' ? 'bg-blue-600 text-white' : 'bg-slate-100'
-              }`}
-            >
-              {message.content}
-            </div>
+            {message.role === 'user' ? (
+              <div className="inline-block rounded-lg bg-blue-600 px-3 py-2 text-sm text-white">
+                {message.content}
+              </div>
+            ) : (
+              <div className="rounded-lg bg-slate-100 px-4 py-3">
+                <MarkdownMessage content={message.content} />
+              </div>
+            )}
           </div>
         ))}
       </div>
